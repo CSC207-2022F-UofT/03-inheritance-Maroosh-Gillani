@@ -5,6 +5,8 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.ArrayList;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -16,7 +18,7 @@ public abstract class Bag {
     private String color;
     private int numberOfContents;
     private int capacity;
-    private String[] contents;
+    private ArrayList<String> contents = new ArrayList<>();
 
 
     /*
@@ -75,12 +77,11 @@ public abstract class Bag {
      */
     boolean addItem(String newItem) {
         if (this.numberOfContents < this.capacity) {
-            this.numberOfContents ++;
-            //add newItem to contents
+            this.numberOfContents += 1;
+            this.contents.add(newItem);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 
@@ -96,6 +97,15 @@ public abstract class Bag {
      *
      * @return
      */
+    String popItem() {
+        if (this.numberOfContents > 0) {
+            String removedItem = this.contents.get(this.numberOfContents - 1);
+            this.contents.remove(this.numberOfContents - 1);
+            this.numberOfContents -= 1;
+            return removedItem;
+        }
+        return null;
+    }
 
 
 
@@ -108,7 +118,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
-
+        this.capacity += n;
     }
 
     /**
