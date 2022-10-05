@@ -18,7 +18,7 @@ public abstract class Bag {
     private String color;
     private int numberOfContents;
     private int capacity;
-    private ArrayList<String> contents = new ArrayList<>();
+    private ArrayList<String> contents;
 
 
     /*
@@ -33,6 +33,8 @@ public abstract class Bag {
     public Bag(String bagColor, int bagCapacity) {
         this.color = bagColor;
         this.capacity = bagCapacity;
+        this.contents = new ArrayList<>();
+        this.numberOfContents = 0;
     }
 
 
@@ -75,7 +77,7 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
-    boolean addItem(String newItem) {
+    public boolean addItem(String newItem) {
         if (this.numberOfContents < this.capacity) {
             this.numberOfContents += 1;
             this.contents.add(newItem);
